@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gafas de Sol Inteligentes Pro Max | El Salvador</title>
+  <meta name="description" content="Gafas de sol inteligentes Pro Max en El Salvador. Precio $39, pago contra entrega y envio gratis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #667085;
+      --line: #dde3ea;
+      --paper: #fbfcfd;
+      --white: #ffffff;
+      --blue: #0d4f7c;
+      --teal: #20b7c8;
+      --gold: #d98232;
+      --green: #17845b;
+      --shadow: 0 16px 36px rgba(15, 23, 42, .12);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    img, video { display: block; max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    .topbar {
+      position: sticky;
+      top: 38px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 58px;
+      padding: 10px 16px;
+      border-bottom: 1px solid rgba(17, 24, 39, .08);
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(14px);
+    }
+
+    .promo-strip {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      overflow: hidden;
+      min-height: 38px;
+      display: flex;
+      align-items: center;
+      background: #111827;
+      color: var(--white);
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+    }
+
+    .promo-track {
+      display: flex;
+      width: max-content;
+      animation: promoMove 18s linear infinite;
+    }
+
+    .promo-group {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding-right: 18px;
+      white-space: nowrap;
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .promo-group span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .1);
+    }
+
+    .promo-group strong { color: #8ce2ec; }
+
+    @keyframes promoMove {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .brand {
+      display: inline-grid;
+      grid-template-columns: 38px auto;
+      align-items: center;
+      gap: 9px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0;
+      color: var(--blue);
+      text-transform: uppercase;
+    }
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #05070a;
+    }
+
+    .brand-text {
+      display: grid;
+      gap: 1px;
+    }
+
+    .brand span {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .top-price {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 38px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #111827;
+      color: var(--white);
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .top-price small {
+      color: #cfeaf0;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding: 22px 16px;
+    }
+
+    .wrap {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding-top: 18px;
+      background:
+        linear-gradient(155deg, rgba(13, 79, 124, .08), rgba(32, 183, 200, 0) 42%),
+        linear-gradient(22deg, rgba(217, 130, 50, .14), rgba(255, 255, 255, 0) 38%);
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: 14px;
+    }
+
+    .stock-pill {
+      width: fit-content;
+      padding: 7px 10px;
+      border: 1px solid rgba(23, 132, 91, .22);
+      border-radius: 999px;
+      background: rgba(23, 132, 91, .09);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 12ch;
+      color: var(--blue);
+      font-size: clamp(36px, 11vw, 78px);
+      line-height: .9;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .sub {
+      margin: 0;
+      max-width: 30rem;
+      color: #27364a;
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .buy-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .price-card, .trust-card {
+      min-height: 86px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .price-card strong {
+      display: block;
+      font-size: 38px;
+      line-height: 1;
+    }
+
+    .price-card span,
+    .trust-card span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .trust-card {
+      display: grid;
+      align-content: center;
+      gap: 6px;
+      color: var(--green);
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.05;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 14px 18px;
+      border: 0;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, var(--gold), #f0a25b);
+      color: #111827;
+      box-shadow: 0 14px 22px rgba(217, 130, 50, .25);
+      font: inherit;
+      font-weight: 900;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .hero-media {
+      position: relative;
+      min-height: 310px;
+      display: grid;
+      align-items: end;
+      isolation: isolate;
+    }
+
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 12% 2% 0;
+      z-index: -1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(32, 183, 200, .22), rgba(255, 255, 255, 0) 68%);
+    }
+
+    .hero-media img {
+      width: 100%;
+      max-height: 470px;
+      object-fit: contain;
+      filter: drop-shadow(0 24px 22px rgba(15, 23, 42, .22));
+    }
+
+    .quick {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: -4px;
+    }
+
+    .quick div {
+      min-height: 72px;
+      padding: 10px 8px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.12;
+    }
+
+    .quick strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--teal);
+      font-size: 18px;
+    }
+
+    .split {
+      display: grid;
+      gap: 18px;
+    }
+
+    .video-box {
+      overflow: hidden;
+      border: 1px solid #111827;
+      border-radius: var(--radius);
+      background: #05070a;
+      box-shadow: var(--shadow);
+    }
+
+    .video-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 14px;
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .video-head span {
+      color: #8ce2ec;
+      font-size: 12px;
+    }
+
+    video {
+      width: 100%;
+      aspect-ratio: 9 / 12;
+      object-fit: cover;
+      background: #05070a;
+    }
+
+    .order-card {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .order-card h2,
+    .block-title {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .order-card h2 span,
+    .block-title span {
+      color: var(--gold);
+    }
+
+    form {
+      display: grid;
+      gap: 10px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      color: #344054;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius);
+      background: #fbfdff;
+      color: var(--ink);
+      font: inherit;
+      font-size: 15px;
+      outline: 0;
+    }
+
+    textarea {
+      min-height: 78px;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 4px rgba(32, 183, 200, .14);
+    }
+
+    .submit {
+      margin-top: 4px;
+      color: var(--white);
+      background: linear-gradient(135deg, #0d4f7c, #20b7c8);
+      box-shadow: 0 14px 22px rgba(13, 79, 124, .22);
+    }
+
+    .form-note {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .status {
+      min-height: 22px;
+      margin: 0;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .status.ok { color: var(--green); }
+    .status.bad { color: #b42318; }
+
+    .gallery {
+      display: grid;
+      gap: 12px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .feature {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+
+    .feature img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    .feature p {
+      margin: 0;
+      padding: 12px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.15;
+    }
+
+    .wide-shot {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+
+    .wide-shot img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .package {
+      display: grid;
+      gap: 12px;
+      align-items: center;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #111827;
+      color: var(--white);
+    }
+
+    .package img {
+      overflow: hidden;
+      width: 100%;
+      border-radius: var(--radius);
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .package h2 {
+      margin: 0;
+      font-size: 28px;
+      line-height: .95;
+      text-transform: uppercase;
+    }
+
+    .package ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #d7f4f8;
+      font-weight: 800;
+    }
+
+    .final-band {
+      padding-bottom: 92px;
+      background: linear-gradient(180deg, #fbfcfd, #eef8fa);
+    }
+
+    .sticky-cta {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 25;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid rgba(17, 24, 39, .12);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .94);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .sticky-cta strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .sticky-cta span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .sticky-cta .cta {
+      min-height: 44px;
+      padding: 10px 14px;
+      font-size: 14px;
+    }
+
+    @media (min-width: 680px) {
+      .section { padding: 34px 24px; }
+      .hero-grid, .split { grid-template-columns: 1.05fr .95fr; align-items: center; }
+      .hero-media { min-height: 520px; }
+      .quick { grid-template-columns: repeat(6, 1fr); }
+      .feature-grid { grid-template-columns: repeat(3, 1fr); }
+      video { aspect-ratio: 16 / 10; }
+      .package { grid-template-columns: .95fr 1.05fr; padding: 22px; }
+      .sticky-cta { display: none; }
+      .final-band { padding-bottom: 46px; }
+    }
+
+    @media (min-width: 980px) {
+      .topbar { padding-inline: 28px; }
+      .hero { padding-top: 34px; }
+      .hero-grid { gap: 34px; }
+      .order-card { padding: 22px; }
+      .gallery { gap: 18px; }
+      .feature-grid { gap: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="promo-strip" aria-label="Promociones">
+    <div class="promo-track">
+      <div class="promo-group">
+        <span><strong>COD</strong>&nbsp; pagas al recibir</span>
+        <span>Envio gratis</span>
+        <span>Cobertura en todo El Salvador</span>
+        <span>Precio especial $39</span>
+      </div>
+      <div class="promo-group" aria-hidden="true">
+        <span><strong>COD</strong>&nbsp; pagas al recibir</span>
+        <span>Envio gratis</span>
+        <span>Cobertura en todo El Salvador</span>
+        <span>Precio especial $39</span>
+      </div>
+    </div>
+  </div>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Inicio">
+      <img src="assets/lumina.jpeg" alt="Lumina Store">
+      <span class="brand-text">
+        Gafas Pro Max
+        <span>El Salvador</span>
+      </span>
+    </a>
+    <a class="top-price" href="#pedido"><small>Hoy</small> $39</a>
+  </header>
+
+  <main id="inicio">
+    <section class="hero section">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="stock-pill">Disponible en El Salvador</span>
+          <h1>Gafas de Sol Inteligentes</h1>
+          <p class="sub">Bluetooth, manos libres y lentes plegables en un solo diseño.</p>
+          <div class="buy-row">
+            <div class="price-card">
+              <span>Precio especial</span>
+              <strong>$39</strong>
+            </div>
+            <div class="trust-card">
+              <span>Compra segura</span>
+              COD + envio gratis
+            </div>
+          </div>
+          <a class="cta" href="#pedido">Comprar ahora</a>
+        </div>
+        <div class="hero-media">
+          <img src="assets/gafas1.png" alt="Gafas de sol inteligentes Pro Max">
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap quick" aria-label="Beneficios principales">
+        <div><strong>BT</strong>Bluetooth</div>
+        <div><strong>2-4h</strong>Uso continuo</div>
+        <div><strong>COD</strong>Pagas al recibir</div>
+        <div><strong>$0</strong>Envio gratis</div>
+        <div><strong>Mic</strong>Manos libres</div>
+        <div><strong>USB</strong>Carga rapida</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap split">
+        <aside class="order-card" id="pedido">
+          <h2>Ordena <span>ahora</span></h2>
+          <form id="orderForm">
+            <input type="hidden" name="producto" value="Gafas de Sol Inteligentes Pro Max">
+            <input type="hidden" name="precio" value="39">
+            <input type="hidden" name="pais" value="El Salvador">
+            <input type="hidden" name="pago" value="COD">
+            <input type="hidden" name="envio" value="Gratis">
+
+            <label>
+              Nombre y Apellido
+              <input name="nombre" autocomplete="name" required placeholder="Tu nombre completo">
+            </label>
+            <label>
+              Telefono
+              <input name="telefono" type="tel" inputmode="tel" autocomplete="tel" required placeholder="Ej: 7777 7777">
+            </label>
+            <label>
+              Provincia
+              <select name="provincia" required>
+                <option value="">Selecciona</option>
+                <option>Ahuachapan</option>
+                <option>Cabanas</option>
+                <option>Chalatenango</option>
+                <option>Cuscatlan</option>
+                <option>La Libertad</option>
+                <option>La Paz</option>
+                <option>La Union</option>
+                <option>Morazan</option>
+                <option>San Miguel</option>
+                <option>San Salvador</option>
+                <option>San Vicente</option>
+                <option>Santa Ana</option>
+                <option>Sonsonate</option>
+                <option>Usulutan</option>
+              </select>
+            </label>
+            <label>
+              Ciudad/Municipio
+              <input name="ciudad" required placeholder="Ciudad o municipio">
+            </label>
+            <label>
+              Direccion Completa
+              <textarea name="direccion" required placeholder="Colonia, calle, casa, punto de referencia"></textarea>
+            </label>
+            <button class="cta submit" type="submit">Confirmar pedido - $39</button>
+            <p class="form-note">Pago contra entrega. Envio gratis a El Salvador.</p>
+            <p class="status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+        </aside>
+
+        <div class="video-box">
+          <div class="video-head">
+            Video del producto
+            <span>Reemplaza el archivo si deseas</span>
+          </div>
+          <video src="assets/gafas_vid.mp4" controls playsinline preload="metadata" poster="assets/gafas1.png"></video>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap gallery">
+        <h2 class="block-title">Tecnologia <span>lista</span></h2>
+        <div class="feature-grid">
+          <article class="feature">
+            <img src="assets/lp3.png" alt="Partes de las gafas inteligentes">
+            <p>Controles Bluetooth y microfono integrado.</p>
+          </article>
+          <article class="feature">
+            <img src="assets/gafas5.png" alt="Diseno ergonomico de las gafas inteligentes">
+            <p>Comodas para manejar, entrenar o caminar.</p>
+          </article>
+          <article class="feature">
+            <img src="assets/gafas4.png" alt="Botones de volumen y Bluetooth">
+            <p>Botones practicos para musica y llamadas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap wide-shot">
+        <img src="assets/lp.png" alt="Beneficios de las gafas inteligentes Pro Max">
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap package">
+        <img src="assets/gafas6.jpg" alt="Contenido del paquete de gafas inteligentes">
+        <div>
+          <h2>Recibes todo listo</h2>
+          <ul>
+            <li>Gafas inteligentes Pro Max</li>
+            <li>Estuche, cable USB y accesorios</li>
+            <li>Entrega gratis y pago al recibir</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-band">
+      <div class="wrap wide-shot">
+        <img src="assets/lp1.png" alt="Detalles de auriculares y lentes plegables">
+      </div>
+    </section>
+  </main>
+
+  <div class="sticky-cta" aria-label="Comprar ahora">
+    <div>
+      <strong>$39</strong>
+      <span>COD + envio gratis</span>
+    </div>
+    <a class="cta" href="#pedido">Ordenar</a>
+  </div>
+
+  <script>
+    const WEB_APP_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+    const form = document.getElementById("orderForm");
+    const statusEl = document.getElementById("formStatus");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const submitButton = form.querySelector("button[type='submit']");
+      const payload = Object.fromEntries(new FormData(form).entries());
+      payload.fecha = new Date().toISOString();
+      payload.origen = window.location.href;
+
+      if (!WEB_APP_URL || WEB_APP_URL.includes("PASTE_YOUR")) {
+        statusEl.className = "status bad";
+        statusEl.textContent = "Falta configurar el enlace de Google Sheets.";
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Enviando pedido...";
+      statusEl.className = "status";
+      statusEl.textContent = "";
+
+      try {
+        await fetch(WEB_APP_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+
+        form.reset();
+        statusEl.className = "status ok";
+        statusEl.textContent = "Pedido recibido. Te contactaremos pronto.";
+      } catch (error) {
+        statusEl.className = "status bad";
+        statusEl.textContent = "No se pudo enviar. Revisa tu conexion e intenta de nuevo.";
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Confirmar pedido - $39";
+      }
+    });
+  </script>
+</body>
+</html>
