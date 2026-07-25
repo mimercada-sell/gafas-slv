@@ -678,23 +678,9 @@
             </label>
             <label>
               Provincia
-              <select name="provincia" required>
-                <option value="">Selecciona</option>
-                <option>Ahuachapan</option>
-                <option>Cabanas</option>
-                <option>Chalatenango</option>
-                <option>Cuscatlan</option>
-                <option>La Libertad</option>
-                <option>La Paz</option>
-                <option>La Union</option>
-                <option>Morazan</option>
-                <option>San Miguel</option>
-                <option>San Salvador</option>
-                <option>San Vicente</option>
-                <option>Santa Ana</option>
-                <option>Sonsonate</option>
-                <option>Usulutan</option>
-              </select>
+              <input name="provincia" required placeholder="Provincia">
+
+             
             </label>
             <label>
               Ciudad/Municipio
@@ -775,138 +761,151 @@
     <a class="cta" href="#pedido">Ordenar</a>
   </div>
 
- <script>
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyzrvTZL4eZeQwx7NqL9TyCcKZ_qfA2KiE86hHzXN3D6eu2Rnd0F5sSFY3O99uUufax/exec";
+  <script>
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyzrvTZL4eZeQwx7NqL9TyCcKZ_qfA2KiE86hHzXN3D6eu2Rnd0F5sSFY3O99uUufax/exec";
 
-const form = document.getElementById("orderForm");
-const statusEl = document.getElementById("formStatus");
+  const form = document.getElementById("orderForm");
 
-let isSubmitting = false;
-
-
-function getTrackingParams() {
-  const params = new URLSearchParams(window.location.search);
-
-  return {
-    source: params.get("utm_source") || "Facebook",
-    campaign: params.get("utm_campaign") || "Test1",
-    adset: params.get("utm_term") || "Broad",
-    ad: params.get("utm_content") || "Video1"
-  };
-}
+  let isSubmitting = false;
 
 
-form.addEventListener("submit", async (event) => {
+  function getTrackingParams() {
+    const params = new URLSearchParams(window.location.search);
 
-  event.preventDefault();
-
-
-  // Prevent duplicate submissions
-  if (isSubmitting) {
-    return;
-  }
-
-  isSubmitting = true;
-
-
-  const submitButton = form.querySelector("button[type='submit']");
-
-
-  // Disable button
-  submitButton.disabled = true;
-  submitButton.style.opacity = "0.6";
-  submitButton.style.cursor = "not-allowed";
-  submitButton.textContent = "Enviando pedido...";
-
-
-  const payload = {
-    ...Object.fromEntries(new FormData(form).entries()),
-
-    fecha: new Date().toISOString(),
-
-    pais: "El Salvador",
-    producto: "Gafas con Audio Bluetooth",
-    precio: 39,
-    moneda: "USD",
-
-    origen: window.location.href,
-
-    // Facebook tracking
-    ...getTrackingParams()
-  };
-
-
-  if (!WEB_APP_URL || WEB_APP_URL.includes("PASTE_YOUR")) {
-
-    statusEl.className = "status bad";
-    statusEl.textContent = "Falta configurar el enlace de Google Sheets.";
-
-    isSubmitting = false;
-    submitButton.disabled = false;
-
-    return;
+    return {
+      source: params.get("utm_source") || "Facebook",
+      campaign: params.get("utm_campaign") || "Test1",
+      adset: params.get("utm_term") || "Broad",
+      ad: params.get("utm_content") || "Video1"
+    };
   }
 
 
-  try {
+  form.addEventListener("submit", async (event) => {
 
-    await fetch(WEB_APP_URL, {
-
-      method: "POST",
-
-      mode: "no-cors",
-
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8"
-      },
-
-      body: JSON.stringify(payload)
-
-    });
+    event.preventDefault();
 
 
-    // Meta Pixel Lead event
-    if (typeof fbq === "function") {
+    if (isSubmitting) {
+      return;
+    }
 
-      fbq("track", "Lead", {
-        content_name: "Gafas con Audio Bluetooth",
-        value: 39,
-        currency: "USD"
+    isSubmitting = true;
+
+
+    const submitButton = form.querySelector("button[type='submit']");
+
+
+    // Disable button
+    submitButton.disabled = true;
+    submitButton.style.opacity = "0.6";
+    submitButton.style.cursor = "not-allowed";
+    submitButton.textContent = "Enviando pedido...";
+
+
+    const payload = {
+
+      ...Object.fromEntries(new FormData(form).entries()),
+
+      fecha: new Date().toISOString(),
+
+      pais: "El Salvador",
+      producto: "Gafas con Audio Bluetooth",
+      precio: 39,
+      moneda: "USD",
+
+      origen: window.location.href,
+
+      ...getTrackingParams()
+
+    };
+
+
+    if (!WEB_APP_URL || WEB_APP_URL.includes("PASTE_YOUR")) {
+
+      alert("❌ Falta configurar el enlace de Google Sheets.");
+
+      isSubmitting = false;
+
+      submitButton.disabled = false;
+      submitButton.style.opacity = "1";
+      submitButton.style.cursor = "pointer";
+      submitButton.textContent = "Confirmar pedido - $39";
+
+      return;
+    }
+
+
+
+    try {
+
+
+      await fetch(WEB_APP_URL, {
+
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+
+        body: JSON.stringify(payload)
+
       });
+
+
+
+      // Meta Pixel Lead
+      if (typeof fbq === "function") {
+
+        fbq("track", "Lead", {
+
+          content_name: "Gafas con Audio Bluetooth",
+
+          value: 39,
+
+          currency: "USD"
+
+        });
+
+      }
+
+
+
+      form.reset();
+
+
+      alert(
+        "✅ Pedido enviado correctamente.\n\nTe contactaremos pronto para confirmar la entrega."
+      );
+
+
+
+    } catch (error) {
+
+
+      console.error(error);
+
+
+      alert(
+        "❌ No se pudo enviar el pedido.\n\nIntenta de nuevo."
+      );
+
+
+      // Allow retry only if failed
+      isSubmitting = false;
+
+      submitButton.disabled = false;
+      submitButton.style.opacity = "1";
+      submitButton.style.cursor = "pointer";
+      submitButton.textContent = "Confirmar pedido - $39";
+
 
     }
 
 
-    form.reset();
-
-    statusEl.className = "status ok";
-    statusEl.textContent =
-      "Pedido recibido. Te contactaremos pronto para confirmar la entrega.";
-
-
-    // Optional:
-    // window.location.href = "/gracias.html";
-
-
-  } catch (error) {
-
-    console.error(error);
-
-    statusEl.className = "status bad";
-    statusEl.textContent =
-      "No se pudo enviar. Intenta de nuevo.";
-
-
-    // Allow retry only if failed
-    isSubmitting = false;
-
-    submitButton.disabled = false;
-    submitButton.style.opacity = "1";
-    submitButton.style.cursor = "pointer";
-
-  }
-
-});
-</script>
+  });
+  </script>
 </body>
 </html>
