@@ -8,6 +8,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}
+    (window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
   <style>
     :root {
       --ink: #111827;
@@ -761,49 +775,138 @@
     <a class="cta" href="#pedido">Ordenar</a>
   </div>
 
-  <script>
-    const WEB_APP_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
-    const form = document.getElementById("orderForm");
-    const statusEl = document.getElementById("formStatus");
+ <script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyzrvTZL4eZeQwx7NqL9TyCcKZ_qfA2KiE86hHzXN3D6eu2Rnd0F5sSFY3O99uUufax/exec";
 
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
+const form = document.getElementById("orderForm");
+const statusEl = document.getElementById("formStatus");
 
-      const submitButton = form.querySelector("button[type='submit']");
-      const payload = Object.fromEntries(new FormData(form).entries());
-      payload.fecha = new Date().toISOString();
-      payload.origen = window.location.href;
+let isSubmitting = false;
 
-      if (!WEB_APP_URL || WEB_APP_URL.includes("PASTE_YOUR")) {
-        statusEl.className = "status bad";
-        statusEl.textContent = "Falta configurar el enlace de Google Sheets.";
-        return;
-      }
 
-      submitButton.disabled = true;
-      submitButton.textContent = "Enviando pedido...";
-      statusEl.className = "status";
-      statusEl.textContent = "";
+function getTrackingParams() {
+  const params = new URLSearchParams(window.location.search);
 
-      try {
-        await fetch(WEB_APP_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload)
-        });
+  return {
+    source: params.get("utm_source") || "Facebook",
+    campaign: params.get("utm_campaign") || "Test1",
+    adset: params.get("utm_term") || "Broad",
+    ad: params.get("utm_content") || "Video1"
+  };
+}
 
-        form.reset();
-        statusEl.className = "status ok";
-        statusEl.textContent = "Pedido recibido. Te contactaremos pronto.";
-      } catch (error) {
-        statusEl.className = "status bad";
-        statusEl.textContent = "No se pudo enviar. Revisa tu conexion e intenta de nuevo.";
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = "Confirmar pedido - $39";
-      }
+
+form.addEventListener("submit", async (event) => {
+
+  event.preventDefault();
+
+
+  // Prevent duplicate submissions
+  if (isSubmitting) {
+    return;
+  }
+
+  isSubmitting = true;
+
+
+  const submitButton = form.querySelector("button[type='submit']");
+
+
+  // Disable button
+  submitButton.disabled = true;
+  submitButton.style.opacity = "0.6";
+  submitButton.style.cursor = "not-allowed";
+  submitButton.textContent = "Enviando pedido...";
+
+
+  const payload = {
+    ...Object.fromEntries(new FormData(form).entries()),
+
+    fecha: new Date().toISOString(),
+
+    pais: "El Salvador",
+    producto: "Gafas con Audio Bluetooth",
+    precio: 39,
+    moneda: "USD",
+
+    origen: window.location.href,
+
+    // Facebook tracking
+    ...getTrackingParams()
+  };
+
+
+  if (!WEB_APP_URL || WEB_APP_URL.includes("PASTE_YOUR")) {
+
+    statusEl.className = "status bad";
+    statusEl.textContent = "Falta configurar el enlace de Google Sheets.";
+
+    isSubmitting = false;
+    submitButton.disabled = false;
+
+    return;
+  }
+
+
+  try {
+
+    await fetch(WEB_APP_URL, {
+
+      method: "POST",
+
+      mode: "no-cors",
+
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+
+      body: JSON.stringify(payload)
+
     });
-  </script>
+
+
+    // Meta Pixel Lead event
+    if (typeof fbq === "function") {
+
+      fbq("track", "Lead", {
+        content_name: "Gafas con Audio Bluetooth",
+        value: 39,
+        currency: "USD"
+      });
+
+    }
+
+
+    form.reset();
+
+    statusEl.className = "status ok";
+    statusEl.textContent =
+      "Pedido recibido. Te contactaremos pronto para confirmar la entrega.";
+
+
+    // Optional:
+    // window.location.href = "/gracias.html";
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    statusEl.className = "status bad";
+    statusEl.textContent =
+      "No se pudo enviar. Intenta de nuevo.";
+
+
+    // Allow retry only if failed
+    isSubmitting = false;
+
+    submitButton.disabled = false;
+    submitButton.style.opacity = "1";
+    submitButton.style.cursor = "pointer";
+
+  }
+
+});
+</script>
 </body>
 </html>
